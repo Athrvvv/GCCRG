@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gesture Mapping</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Gesture Mapping Panel</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Gesture</th>
+                <th>Right Key</th>
+                <th>Left Key</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for gesture, mapping in gesture_mappings.items() %}
+            <tr>
+                <td>{{ gesture }}</td>
+                <td><input type="text" id="right_{{ gesture }}" value="{{ mapping.right }}"></td>
+                <td><input type="text" id="left_{{ gesture }}" value="{{ mapping.left }}"></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <button id="save-button">Save Mappings</button>
+    <button id="run-button">Run Prototype</button>
+    <button id="stop-button">Stop Prototype</button>
+    <a href="/logout"><button>Logout</button></a>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
